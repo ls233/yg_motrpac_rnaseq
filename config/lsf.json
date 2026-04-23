@@ -42,6 +42,14 @@
         "output"    : "log/cluster/{rule}.out",
         "error"     : "log/cluster/{rule}.err"
     },
+    "bowtie1_index" :
+    {
+        "nCPUs"     : "6",
+        "resources" : "\"rusage[mem=6000] span[hosts=1]\"",
+        "name"      : "{rule}",
+        "output"    : "log/cluster/{rule}.out",
+        "error"     : "log/cluster/{rule}.err"
+    },
     
     "star_align" :
     {
