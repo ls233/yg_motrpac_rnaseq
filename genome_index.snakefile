@@ -4,6 +4,7 @@ rule all:
         "log/OK.star_index",
         "log/OK.rsem_index",
         "log/OK.bowtie_index",
+        "log/OK.bowtie1_index",
         "log/OK.bismark_index",
         "log/OK.qc53_ref"
         
@@ -85,5 +86,19 @@ rule qc53_ref:
     shell:
         '''
         qc53_ref.sh >{log}
+        echo OK >{output}
+        '''
+
+rule bowtie1_index:
+    input:
+        "genome.fa"
+    output:
+        "log/OK.bowtie1_index"
+    log:
+        "bowtie1_index/log/build.log"
+    threads: 6
+    shell:
+        '''
+        bowtie1_index.sh {threads} >&{log}
         echo OK >{output}
         '''
